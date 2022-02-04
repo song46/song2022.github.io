@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+$primaryColor: #ec2c59;
+$primaryColorLight: #fdd9f0;
+$accentColor: #fff;
+$primaryFont: 'Orbitron', sans-serif;;
+
+@mixin transition() {
+    transition: all .2s ease-out;
+}
+
+@mixin breakpoint($point) {
+    @if $point == desktop {
+        @media (max-width: 1440px) {
+            @content;
+        }
+    } @else if $point == laptop {
+        @media (max-width: 1120px) {
+            @content;
+        }
+    } @else if $point == tablet {
+        @media (max-width: 900px) {
+            @content;
+        }
+    } @else if $point == phablet {
+        @media (max-width: 768px) {
+            @content;
+        }
+    } @else if $point == mobile {
+        @media (max-width: 500px) {
+            @content;
+        }
+    } @else {
+        @media ($point) {
+            @content;
+        }
+    }
+}
+
+body {
+  font-family: $primaryFont;
+  background: url('https://solajump.solmint.co/static/media/bgNewJim.a234ac8c.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+a,
+button,
+input,
+textarea {
+  font-family: $primaryFont;
+}
+
+#root {
+  min-height: 100vh;
+  height: 100%;
+  overflow: hidden;
+  background: #000000a0;
+}
+
+.container {
+  max-width: 1440px;
+  padding: 0 3.75rem;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p {
+  font-size: 18px;
+}
+
+a,
+button {
+  outline: none;
+}
+
+button {
+  border-radius: 50px;
+  border: unset;
+  width: fit-content;
+  height: 2.5em;
+  padding: 0 2em;
+  @include transition();
+
+  &.filled {
+    background: $primaryColor;
+    color: $accentColor;
+
+    &:hover {
+      background: $accentColor;
+      color: $primaryColor;
+    }
+  }
+
+  &.outlined {    
+    background: transparent;
+    color: $primaryColor;
+    border: 1px solid $primaryColor;
+
+    &:hover {
+      background: $primaryColor;
+      color: $accentColor;
+      box-shadow: 0px 0px 10px 2px $primaryColor;
+    }
+  }
+}
